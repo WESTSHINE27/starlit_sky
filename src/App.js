@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import "./style.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="background">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <div key={i} className={[`starLayer${i}`]} />
+      ))}
+      <h1 className="title">Starlit Sky</h1>
     </div>
   );
 }

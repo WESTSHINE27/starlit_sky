@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.background {
+  background: linear-gradient(to bottom right, black, rgb(53, 53, 53));
+  height: 100dvh;
+  width: 100dvw;
+}
+
+@function random-shadows($count, $color: white, $range: 100) {
+  $shadows: ();
+  @for $i from 1 through $count {
+    $x: random($range) * 1dvw;
+    $y: random($range) * 1dvh;
+    $shadows: append($shadows, #{$x} #{$y} #{$color}, comma);
+  }
+  @return $shadows;
+}
+
+@keyframes move-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100dvh);
+  }
+}
+
+$n: 5;
+$duration: 400;
+@for $i from 1 through $n {
+  $duration: floor($duration/2);
+  .starLayer#{$i} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: #{$i}px;
+    width: #{$i}px;
+    border-radius: 50%;
+    box-shadow: random-shadows(50);
+    animation: move-up #{$duration}s linear infinite;
+  }
+  .starLayer#{$i}::after {
+    content: "";
+    position: inherit;
+    top: 100vh;
+    left: inherit;
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    animation: inherit;
+  }
+}
+
+.title {
+  margin: 0;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 86px;
+}
