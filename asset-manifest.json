@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/starlit_sky/static/css/main.c83f409a.css",
+    "main.css": "/starlit_sky/static/css/main.0df9e36f.css",
     "main.js": "/starlit_sky/static/js/main.a3ad4e7b.js",
     "index.html": "/starlit_sky/index.html",
-    "main.c83f409a.css.map": "/starlit_sky/static/css/main.c83f409a.css.map",
+    "main.0df9e36f.css.map": "/starlit_sky/static/css/main.0df9e36f.css.map",
     "main.a3ad4e7b.js.map": "/starlit_sky/static/js/main.a3ad4e7b.js.map"
   },
   "entrypoints": [
-    "static/css/main.c83f409a.css",
+    "static/css/main.0df9e36f.css",
     "static/js/main.a3ad4e7b.js"
   ]
 }
