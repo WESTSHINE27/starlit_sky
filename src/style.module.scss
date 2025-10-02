@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:list";
+
 body {
   padding: 0;
   margin: 0;
@@ -5,15 +8,16 @@ body {
 
 .background {
   background: linear-gradient(to bottom right, black, rgb(53, 53, 53));
-  height: 100dvh;
-  width: 100dvw;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
 @function random-shadows($count, $color: white, $range: 100) {
   $shadows: ();
   @for $i from 1 through $count {
-    $x: random($range) * 1dvw;
-    $y: random($range) * 1dvh;
+    $x: math.random($range) * 1dvw;
+    $y: math.random($range) * 1dvh;
     $shadows: append($shadows, #{$x} #{$y} #{$color}, comma);
   }
   @return $shadows;
@@ -31,27 +35,28 @@ body {
 $n: 5;
 $duration: 400;
 @for $i from 1 through $n {
-  $duration: floor($duration/2);
+  $duration: math.floor(calc($duration/2));
+  $shadows: random-shadows(50);
+
   .starLayer#{$i} {
+    box-shadow: $shadows;
     position: fixed;
     top: 0;
     left: 0;
     height: #{$i}px;
     width: #{$i}px;
     border-radius: 50%;
-    box-shadow: random-shadows(50);
     animation: move-up #{$duration}s linear infinite;
   }
-  .starLayer#{$i}::after {
-    content: "";
-    position: inherit;
+  .starLayer#{$i}Duplicate {
+    box-shadow: $shadows;
+    position: fixed;
     top: 100vh;
-    left: inherit;
-    height: inherit;
-    width: inherit;
-    border-radius: inherit;
-    box-shadow: inherit;
-    animation: inherit;
+    left: 0;
+    height: #{$i}px;
+    width: #{$i}px;
+    border-radius: 50%;
+    animation: move-up #{$duration}s linear infinite;
   }
 }
 
